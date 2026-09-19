@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Carolina 💗</title>
+
+<style>
+:root {
+  --pink: #ff8fc8;
+  --pink-light: #ffd8ec;
+  --pink-soft: #ffeaf5;
+  --white: #fffaff;
+  --wine: #4c173d;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 50% 25%, #57224f 0%, #2a1238 48%, #100719 100%);
+}
+
+button { font: inherit; }
+
+#sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1px 1px at 10% 20%, white 50%, transparent 100%),
+    radial-gradient(2px 2px at 70% 15%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 40% 70%, #ffd7ef 50%, transparent 100%),
+    radial-gradient(1px 1px at 85% 55%, white 50%, transparent 100%);
+  background-size: 180px 180px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .45; }
+  to { opacity: 1; }
+}
+
+.sky-heart {
+  position: fixed;
+  z-index: 1;
+  bottom: -60px;
+  color: #ff9dce;
+  opacity: .8;
+  pointer-events: none;
+  animation: skyFloat linear infinite;
+  text-shadow: 0 0 12px #ffb5dc;
+}
+
+@keyframes skyFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: .9; }
+  90% { opacity: .8; }
+  100% { transform: translateY(-115vh) rotate(35deg); opacity: 0; }
+}
+
+.page {
+  position: relative;
+  z-index: 2;
+  width: min(1000px, 94%);
+  margin: auto;
+  padding: 24px 0 80px;
+}
+
+header {
+  text-align: center;
+  padding: 20px 10px 8px;
+}
+
+h1 {
+  margin: 0;
+  color: #ff9bd0;
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 500;
+  text-shadow: 0 0 18px rgba(255, 145, 202, .5);
+}
+
+.tagline {
+  color: #ffe4f2;
+  font-family: "Segoe Script", cursive;
+  font-size: 1.1rem;
+}
+
+.panel {
+  position: relative;
+  margin: 18px 0;
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid rgba(255, 181, 220, .75);
+  border-radius: 25px;
+  background: rgba(34, 13, 39, .83);
+  box-shadow: 0 0 22px rgba(255, 111, 181, .12);
+  text-align: center;
+}
+
+h2 {
+  margin: 0 0 10px;
+  color: #ffc5e3;
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(255, 139, 198, .25);
+}
+
+p {
+  line-height: 1.7;
+}
+
+.soft-text { color: #ffe5f2; }
+
+.button {
+  position: relative;
+  overflow: hidden;
+  margin: 8px 5px;
+  padding: 13px 25px;
+  border: 1px solid #fff0f8;
+  border-radius: 999px;
+  color: #622344;
+  background: linear-gradient(135deg, #fffaff, #ffb8dc);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 147, 203, .22);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 163, 211, .45);
+}
+
+.button:active { transform: scale(.96); }
+
+.hidden { display: none !important; }
+
+.small {
+  color: #eac7dd;
+  font-size: .9rem;
+}
+
+/* Asteroide */
+.space {
+  position: relative;
+  height: 190px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.asteroid {
+  position: absolute;
+  top: 55px;
+  left: -100px;
+  width: 85px;
+  height: 85px;
+  border-radius: 42% 58% 65% 35% / 40% 35% 65% 60%;
+  background:
+    radial-gradient(circle at 28% 24%, #ffe8fa, #d88bd5 35%, #9c5baf 65%, #5d326e);
+  box-shadow: inset -10px -8px 15px rgba(42, 10, 50, .25),
+              0 0 24px rgba(255, 181, 231, .45);
+  animation: asteroidFlight 11s linear infinite;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.asteroid::before,
+.asteroid::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(83, 37, 99, .4);
+}
+
+.asteroid::before {
+  width: 15px; height: 12px;
+  top: 20px; left: 18px;
+}
+
+.asteroid::after {
+  width: 10px; height: 9px;
+  bottom: 18px; right: 17px;
+}
+
+.asteroid-message {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  width: max-content;
+  max-width: 220px;
+  padding: 10px 15px;
+  border: 1px solid #ffc4e4;
+  border-radius: 18px;
+  color: #fff4fb;
+  background: #5b2857;
+  box-shadow: 0 0 15px rgba(255, 155, 210, .3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(5px);
+  transition: .25s;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.asteroid:hover .asteroid-message,
+.asteroid:focus .asteroid-message,
+.asteroid.show-message .asteroid-message {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes asteroidFlight {
+  0% { left: -100px; transform: rotate(0); }
+  45% { left: 55%; transform: rotate(220deg); }
+  100% { left: calc(100% + 20px); transform: rotate(520deg); }
+}
+
+.message-cloud {
+  min-height: 34px;
+  color: #ffd5eb;
+  font-weight: 600;
+}
+
+/* Preguntas */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.quiz-question {
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 173, 215, .55);
+  border-radius: 15px;
+  background: rgba(255, 219, 239, .04);
+}
+
+.quiz-question h3 {
+  color: #ffe0f0;
+  font-size: 1rem;
+  min-height: 42px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.quiz-options button {
+  padding: 9px 10px;
+  border: 1px solid #e9b9d7;
+  border-radius: 999px;
+  color: #fff4fb;
+  background: rgba(255, 220, 240, .08);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.quiz-options button:hover {
+  background: rgba(255, 152, 205, .25);
+}
+
+.quiz-options button.correct {
+  color: #5d2147;
+  background: #ffb9dc;
+}
+
+.quiz-feedback {
+  min-height: 45px;
+  color: #ffd4e9;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .quiz-grid { grid-template-columns: 1fr; }
+  .quiz-question h3 { min-height: auto; }
+}
+
+/* Carta */
+.letter {
+  text-align: left;
+  color: #fff0f8;
+  white-space: pre-line;
+}
+
+.signature {
+  margin-top: 24px;
+  color: #ffc2e2;
+  text-align: right;
+  font-family: "Segoe Script", cursive;
+  font-size: 1.2rem;
+}
+
+/* Animación de corazones desde abajo por toda la pantalla */
+.click-heart {
+  position: fixed;
+  bottom: -60px;
+  z-index: 99999;
+  pointer-events: none;
+  line-height: 1;
+  animation: heartsRise 4.2s ease-out forwards;
+  filter: drop-shadow(0 0 8px rgba(255, 158, 211, .7));
+  will-change: transform, opacity;
+}
+
+@keyframes heartsRise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.4) rotate(0deg);
+  }
+  12% { opacity: 1; }
+  75% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), calc(-110vh - 100px))
+      scale(var(--size)) rotate(var(--rotation));
+  }
+}
+
+/* Explosión final de corazones y estrellas */
+.love-burst {
+  position: fixed;
+  z-index: 100000;
+  pointer-events: none;
+  animation: loveBurst 2.5s ease-out forwards;
+  filter: drop-shadow(0 0 9px rgba(255, 170, 220, .7));
+}
+
+@keyframes loveBurst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(.3) rotate(0);
+  }
+  15% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy))
+      scale(.8) rotate(300deg);
+  }
+}
+
+.heart {
+  display: inline-block;
+  color: #ff9dcc;
+  animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+footer {
+  padding: 20px 5px;
+  color: #f8cfe5;
+  text-align: center;
+  font-size: .9rem;
+}
+</style>
+</head>
+
+<body>
+<div id="sky"></div>
+
+<main class="page">
+  <header>
+    <h1>Para mi Carolina <span class="heart">♡</span></h1>
+    <div class="tagline">Mi lugar favorito siempre será contigo… 💗</div>
+  </header>
+
+  <section class="panel">
+    <h2>¡Feliz aniversario, mi amor! ♡</h2>
+    <p class="soft-text">
+      ¡Casi me olvidé! ¡Feliz aniversario, mi amor!
+      Perdón por demorarme tanto en decírtelo, baby mía. Muack. ♡
+    </p>
+    <p class="soft-text">
+      Desde el 11 de agosto de 2025, cada día contigo es una historia bonita,
+      y quiero seguir escribiéndola a tu lado. Gracias por ser mi persona favorita. ♡
+    </p>
+    <button class="button" onclick="showMessages()">♡ Abrir mi regalito ♡</button>
+  </section>
+
+  <section class="panel">
+    <h2>Un mensajito desde el espacio ✨</h2>
+    <p>¡Mira el asteroide, mi amor! Pasa el cursor sobre él. ♡</p>
+
+    <div class="space">
+      <div class="asteroid" id="romanticAsteroid" tabindex="0" aria-label="Asteroide romántico">
+        <span class="asteroid-message">Te quiero, baby mía ♡</span>
+      </div>
+    </div>
+
+    <div id="messageCloud" class="message-cloud"></div>
+    <p class="small">Cada mensajito es un besito viajando hasta ti. ♡</p>
+  </section>
+
+  <section class="panel hidden" id="messagesPanel">
+    <h2>Unas palabras para ti ♡</h2>
+    <p>
+      Mi amor, aunque a veces me distraiga o se me pasen las fechas,
+      nunca quiero que dudes de lo importante que eres para mí.
+      Me encanta tenerte en mi vida y compartir contigo nuestros momentos,
+      nuestras risas y hasta nuestras pequeñas locuras.
+    </p>
+    <p>
+      Gracias por ser tú, por tu cariño y por hacer que mi mundo tenga
+      un poquito más de luz. Te mando un abrazo enorme y muchos besitos. ♡
+    </p>
+    <button class="button" onclick="showQuiz()">Vamos con unas preguntitas ♡</button>
+  </section>
+
+  <section class="panel hidden" id="quizPanel">
+    <h2>¿Cuánto conoces a tu Danny? ♡</h2>
+    <p>Responde estas preguntitas, baby mía.</p>
+
+    <div class="quiz-grid">
+      <div class="quiz-question">
+        <h3>1. ¿Cuál es mi comida favorita?</h3>
+        <div class="quiz-options">
+          <button onclick="answerQuiz(this,1,false)">Pizza 🍕</button>
+          <button onclick="answerQuiz(this,1,true)">Encocado de pescado 🐟</button>
+          <button onclick="answerQuiz(this,1,false)">Hamburguesa 🍔</button>
+        </div>
+        <p class="quiz-feedback" id="feedback1"></p>
+      </div>
+
+      <div class="quiz-question">
+        <h3>2. ¿Cuál es mi color favorito?</h3>
+        <div class="quiz-options">
+          <button onclick="answerQuiz(this,2,false)">Azul 💙</button>
+          <button onclick="answerQuiz(this,2,false)">Verde 💚</button>
+          <button onclick="answerQuiz(this,2,true)">Rojo vino ♡</button>
+        </div>
+        <p class="quiz-feedback" id="feedback2"></p>
+      </div>
+
+      <div class="quiz-question">
+        <h3>3. ¿Cuál es una de mis canciones favoritas?</h3>
+        <div class="quiz-options">
+          <button onclick="answerQuiz(this,3,false)">Perfect — Ed Sheeran</button>
+          <button onclick="answerQuiz(this,3,true)">Hotel — Montell Fish ♡</button>
+          <button onclick="answerQuiz(this,3,false)">Yellow — Coldplay</button>
+        </div>
+        <p class="quiz-feedback" id="feedback3"></p>
+      </div>
+    </div>
+
+    <button class="button" onclick="showLetter()">♡ Leer mi cartita ♡</button>
+  </section>
+
+  <section class="panel hidden" id="letterPanel">
+    <h2>Una cartita para mi baby mía ♡</h2>
+
+    <div class="letter">Mi Carolina:
+
+No sé si estas palabras alcancen para explicarte todo lo que siento,
+pero quiero que sepas que eres alguien muy especial para mí.
+
+Desde que comenzamos nuestra historia, el 11 de agosto de 2025,
+hemos ido creando recuerdos que guardo con mucho cariño.
+Cada día 11 me recuerda lo bonito que es tenerte en mi vida.
+
+Perdóname si a veces se me pasa alguna fecha o si demoro en decirte
+algo que mereces escuchar. No significa que me olvide de ti ni de
+lo que compartimos. Te quiero muchísimo, mi amor.
+
+Ojalá esta pequeña sorpresa te saque una sonrisa y te recuerde que,
+incluso cuando estamos lejos, hay un Danny que piensa en ti
+y te manda todo su cariño.
+
+Te mando un abrazo de esos que duran mucho y un montón de besitos.
+Muack, muack. ♡</div>
+
+    <p class="signature">Con mucho amor,<br>tu Danny. ♡</p>
+
+    <div class="final-message">
+      <h2>Y ahora, toca este botoncito, mi amor… ♡</h2>
+      <button class="button" onclick="loveExplosion()">♡ ¡Toca aquí, baby mía! ♡</button>
+      <p id="loveExplosionText" aria-live="polite"></p>
+      <p class="small">Puedes presionarlo todas las veces que quieras. ♡</p>
+    </div>
+  </section>
+
+  <footer>
+    11 · 08 · 2025<br>
+    Para siempre. ♡<br>
+    Hecho con mucho amor para Carolina.
+  </footer>
+</main>
+
+<script>
+const romanticMessages = [
+  "Eres mi estrellita favorita. ♡",
+  "Te mando un besito hasta donde estés. 💋",
+  "Mi lugar favorito es contigo. 💗",
+  "Siempre hay una razón para sonreír: tú. 🌷",
+  "Te quiero muchísimo, baby mía. 💕"
+];
+
+let messageIndex = 0;
+let messageTimer = null;
+
+function showMessages() {
+  document.getElementById("messagesPanel").classList.remove("hidden");
+  document.getElementById("messagesPanel").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+  startMessages();
+}
+
+function startMessages() {
+  const cloud = document.getElementById("messageCloud");
+  if (messageTimer) clearInterval(messageTimer);
+
+  cloud.textContent = romanticMessages[messageIndex];
+
+  messageTimer = setInterval(() => {
+    cloud.textContent = "";
+    messageIndex = (messageIndex + 1) % romanticMessages.length;
+    setTimeout(() => {
+      cloud.textContent = romanticMessages[messageIndex];
+    }, 250);
+  }, 2000);
+}
+
+function showQuiz() {
+  document.getElementById("quizPanel").classList.remove("hidden");
+  document.getElementById("quizPanel").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+function answerQuiz(button, question, correct) {
+  const feedback = document.getElementById("feedback" + question);
+
+  if (correct) {
+    feedback.textContent = "¡Siii, mi amor! ♡ ¡Respuesta correcta! 💗";
+    button.classList.add("correct");
+  } else {
+    feedback.textContent = "¡Ay, baby mía! 😠💔 ¡Inténtalo otra vez!";
+  }
+}
+
+function showLetter() {
+  document.getElementById("letterPanel").classList.remove("hidden");
+  document.getElementById("letterPanel").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+/* Corazones por toda la pantalla al pulsar cualquier botón */
+document.addEventListener("click", function(event) {
+  const button = event.target.closest("button");
+  if (!button) return;
+
+  const hearts = ["💗", "💖", "💕", "💘", "💝", "❤️", "💞", "💓", "💟"];
+  const totalHearts = 35;
+
+  for (let i = 0; i < totalHearts; i++) {
+    const heart = document.createElement("span");
+    heart.className = "click-heart";
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.setProperty("--drift", (Math.random() - .5) * 240 + "px");
+    heart.style.setProperty("--size", (.6 + Math.random() * 1.1).toFixed(2));
+    heart.style.setProperty("--rotation", (Math.random() * 720 - 360) + "deg");
+    heart.style.fontSize = (18 + Math.random() * 30) + "px";
+    heart.style.animationDelay = (Math.random() * 1.1) + "s";
+
+    document.body.appendChild(heart);
+    heart.addEventListener("animationend", () => heart.remove());
+  }
+});
+
+/* Explosión especial del botón final */
+function loveExplosion() {
+  const emojis = ["💗", "💖", "💕", "💘", "❤️", "✨", "⭐", "🌟", "💞"];
+
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement("span");
+    particle.className = "love-burst";
+    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = window.innerHeight * (.35 + Math.random() * .5);
+    const dx = (Math.random() - .5) * window.innerWidth;
+    const dy = (Math.random() - .7) * window.innerHeight;
+
+    particle.style.left = startX + "px";
+    particle.style.top = startY + "px";
+    particle.style.setProperty("--dx", dx + "px");
+    particle.style.setProperty("--dy", dy + "px");
+    particle.style.fontSize = (20 + Math.random() * 28) + "px";
+
+    document.body.appendChild(particle);
+    particle.addEventListener("animationend", () => particle.remove());
+  }
+
+  document.getElementById("loveExplosionText").textContent =
+    "¡Muack, muack, muack! 😘💋 ¡Te mando todo mi amor, baby mía! 💗";
+}
+
+/* Mensaje del asteroide: cursor y toque */
+const asteroid = document.getElementById("romanticAsteroid");
+
+asteroid.addEventListener("click", () => {
+  asteroid.classList.add("show-message");
+  setTimeout(() => asteroid.classList.remove("show-message"), 2200);
+});
+
+/* Corazones decorativos flotando continuamente en el fondo */
+function createSkyHeart() {
+  const heart = document.createElement("span");
+  heart.className = "sky-heart";
+  heart.textContent = ["♡", "♥", "💗", "💕"][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 28) + "px";
+  heart.style.animationDuration = (9 + Math.random() * 12) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 22000);
+}
+
+for (let i = 0; i < 20; i++) {
+  setTimeout(createSkyHeart, i * 350);
+}
+setInterval(createSkyHeart, 700);
+</script>
+</body>
+</html>
